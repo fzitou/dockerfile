@@ -1,0 +1,88 @@
+{
+  "outbound": {
+    "streamSettings": null,
+    "tag": null,
+    "protocol": "freedom",
+    "mux": null,
+    "settings": null
+  },
+  "log": {
+    "access": "/dev/null",
+    "loglevel": "warning",
+    "error": "/dev/null"
+  },
+  "inboundDetour": null,
+  "inbound": {
+    "streamSettings": {
+      "httpSettings": null,
+      "network": "kcp",
+      "kcpSettings": {
+        "uplinkCapacity": 100,
+        "downlinkCapacity": 100,
+        "readBufferSize": 2,
+        "mtu": 1350,
+        "header": {
+          "request": null,
+          "type": "dtls",
+          "response": null
+        },
+        "tti": 50,
+        "congestion": false,
+        "writeBufferSize": 2
+      },
+      "wsSettings": null,
+      "tcpSettings": null,
+      "tlsSettings": {},
+      "security": ""
+    },
+    "protocol": "vmess",
+    "port": 443,
+    "settings": {
+      "clients": [
+        {
+          "alterId": 8,
+          "id": "ca313181-c0d0-4df1-b29c-31614ece24c0"
+        }
+      ]
+    }
+  },
+  "outboundDetour": [
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": null
+    }
+  ],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "rules": [
+        {
+          "ip": [
+            "0.0.0.0/8",
+            "10.0.0.0/8",
+            "100.64.0.0/10",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "172.16.0.0/12",
+            "192.0.0.0/24",
+            "192.0.2.0/24",
+            "192.168.0.0/16",
+            "198.18.0.0/15",
+            "198.51.100.0/24",
+            "203.0.113.0/24",
+            "::1/128",
+            "fc00::/7",
+            "fe80::/10"
+          ],
+          "domain": null,
+          "type": "field",
+          "port": null,
+          "outboundTag": "blocked"
+        }
+      ],
+      "domainStrategy": null
+    }
+  },
+  "dns": null
+}
