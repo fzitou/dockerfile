@@ -64,45 +64,5 @@
         "tag": "another-outbound-tag"
       }
     }
-  ],
-  "routing": {
-    "domainStrategy": "AsIs",
-    "rules": [
-      {
-        "type": "field",
-        "domain": [
-          "baidu.com",
-          "qq.com",
-          "geosite:cn"
-        ],
-        "ip": [
-          "0.0.0.0/8",
-          "10.0.0.0/8",
-          "fc00::/7",
-          "fe80::/10",
-          "geoip:cn"
-        ],
-        "port": "0-100",
-        "network": "tcp",
-        "source": [
-          "10.0.0.1"
-        ],
-        "user": [
-          "050cd02a8f78@v2ray.com"
-        ],
-        "inboundTag": [
-          "tag-vmess"
-        ],
-        "protocol": [
-          "http",
-          "tls",
-          "bittorrent"
-        ],
-        "outboundTag": "direct",
-        "balancerTag": "balancer"
-      }
-    ],
-    "balancers": []
-  },
-  "dns": {}
+  ]
 }
