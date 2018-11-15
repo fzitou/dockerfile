@@ -1,0 +1,104 @@
+{
+  "log": {
+    "access": "/dev/null",
+    "loglevel": "warning",
+    "error": "/dev/null"
+  },
+  "inbounds": {
+    "port": 443,
+    "listen": "0.0.0.0",
+    "protocol": "vmess",
+    "streamSettings": {
+      "network": "kcp",
+      "security": "",
+      "kcpSettings": {
+        "uplinkCapacity": 100,
+        "downlinkCapacity": 100,
+        "readBufferSize": 2,
+        "mtu": 1350,
+        "header": {
+          "request": null,
+          "type": "dtls",
+          "response": null
+        },
+        "tti": 50,
+        "congestion": false,
+        "writeBufferSize": 2
+      },
+      "tlsSettings": {},
+      "tcpSettings": {},
+      "wsSettings": {},
+      "httpSettings": {},
+      "dsSettings": {}
+    },
+    "settings": {
+      "clients": [
+        {
+          "id": "ca313181-c0d0-4df1-b29c-31614ece24c0",
+          "level": 0,
+          "alterId": 16,
+          "email": "050cd02a8f78@v2ray.com"
+        }
+      ],
+      "default": {
+        "level": 0,
+        "alterId": 32
+      },
+      "detour": {
+        "to": "tag_to_detour"
+      },
+      "disableInsecureEncryption": true
+    }
+  },
+  "outbounds": {
+    "sendThrough": "0.0.0.0",
+    "protocol": "freedom",
+    "streamSettings": {},
+    "tag": "direct",
+    "mux": {},
+    "settings": {},
+    "proxySettings": {
+      "tag": "another-outbound-tag"
+    }
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "baidu.com",
+          "qq.com",
+          "geosite:cn"
+        ],
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "fc00::/7",
+          "fe80::/10",
+          "geoip:cn"
+        ],
+        "port": "0-100",
+        "network": "tcp",
+        "source": [
+          "10.0.0.1"
+        ],
+        "user": [
+          "050cd02a8f78@v2ray.com"
+        ],
+        "inboundTag": [
+          "tag-vmess"
+        ],
+        "protocol": [
+          "http",
+          "tls",
+          "bittorrent"
+        ],
+        "outboundTag": "direct",
+        "balancerTag": "balancer"
+      }
+    ],
+    "balancers": []
+  },
+  "dns": {}
+}
