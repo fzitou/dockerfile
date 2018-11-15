@@ -49,6 +49,13 @@
           "to": "tag_to_detour"
         },
         "disableInsecureEncryption": true
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
       }
     }
   ],
@@ -67,7 +74,7 @@
     {
       "protocol": "blackhole",
       "settings": {},
-      "tag": "adblock"
+      "tag": "block"
     }
   ],
   "routing": {
@@ -13227,8 +13234,14 @@
           "www.winaproduct.com"
         ],
         "type": "field",
-        "protocol":["bittorrent"],
-        "outboundTag": "adblock"
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "protocol": [
+          "bittorrent"
+        ]
       }
     ]
   }
