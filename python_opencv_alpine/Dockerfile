@@ -11,6 +11,7 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
         musl \
         musl-dev \
         g++ \
+        gcc \
         libgcc \
         libxml2-dev \
         libxslt-dev \
@@ -27,10 +28,9 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
         clang \
         clang-dev \
         ninja \
-    && apk add --no-cache \
-        gcc \
-        python3 \
         curl \
+    && apk add --no-cache \
+        python3 \
         zlib \
         jpeg \
         libjpeg \
