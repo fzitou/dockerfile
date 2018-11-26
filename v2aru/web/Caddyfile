@@ -1,7 +1,6 @@
 :443 {
     root /var/www
     gzip
-    cache
     timeouts none
     log / stdout "{request}"
     proxy /post localhost:1234 {
