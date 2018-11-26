@@ -22,7 +22,7 @@
         "network": "ws",
         "kcpSettings": null,
         "wsSettings": {
-          "path": "/sup"
+          "path": "/post"
         },
         "tcpSettings": null,
         "tlsSettings": {},
