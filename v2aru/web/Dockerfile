@@ -8,11 +8,11 @@ ENV HTML5_UP_DOWNLOAD_URL https://html5up.net/zerofour/download
 
 WORKDIR /var/www/
 RUN apk add -U --no-cache \
+        bash \
         caddy \
         supervisor \
     && apk add --no-cache --virtual .build-deps \
         unzip \
-        bash \
     && wget ${HTML5_UP_DOWNLOAD_URL}  \
     && unzip download \
     && apk del .build-deps \
