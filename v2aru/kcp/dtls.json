@@ -66,10 +66,7 @@
       "streamSettings": {},
       "tag": "direct",
       "mux": {},
-      "settings": {},
-      "proxySettings": {
-        "tag": "another-outbound-tag"
-      }
+      "settings": {}
     },
     {
       "protocol": "blackhole",
@@ -78,9 +75,18 @@
     }
   ],
   "routing": {
-    "domainStrategy": "IPOnDemand",
+    "domainStrategy": "AsIs",
     "rules": [
       {
+        "type": "field",
+        "outboundTag": "blocked",
+        "ip": [
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
         "domain": [
           "tanx.com",
           "googeadsserving.cn",
@@ -13232,13 +13238,11 @@
           "www.stickylogic.com",
           "www.winadiscount.com",
           "www.winaproduct.com"
-        ],
-        "type": "field",
-        "outboundTag": "block"
+        ]
       },
       {
         "type": "field",
-        "outboundTag": "block",
+        "outboundTag": "blocked",
         "protocol": [
           "bittorrent"
         ]
