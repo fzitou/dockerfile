@@ -7,7 +7,7 @@
         websocket
         header_upstream -Origin
     }
-    proxy /sup /tmp/supervisor.sock {
+    proxy /sup localhost:9001 {
         transparent
     }
 }
