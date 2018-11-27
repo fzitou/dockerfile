@@ -4,6 +4,7 @@ ARG TZ='Asia/Shanghai'
 
 ENV TZ $TZ
 ENV PORT 443/tcp
+ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 #ENV HTML5_UP_DOWNLOAD_URL https://html5up.net/zerofour/download
 
 WORKDIR /var/www/
