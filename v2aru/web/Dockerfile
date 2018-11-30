@@ -1,11 +1,11 @@
 FROM v2ray/official
 
 ARG TZ='Asia/Shanghai'
+ARG H2Y_URL='https://github.com/ToutyRater/V2Ray-SiteDAT/blob/master/geofiles/h2y.dat'
+ARG V2_PATH='/usr/bin/v2ray/'
 
-ENV TZ $TZ
 ENV PORT 443/tcp
 ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
-#ENV HTML5_UP_DOWNLOAD_URL https://html5up.net/zerofour/download
 
 WORKDIR /var/www/
 COPY html5up-zerofour.zip html5up-zerofour.zip
@@ -15,9 +15,9 @@ RUN apk add -U --no-cache \
         supervisor \
     && apk add --no-cache --virtual .build-deps \
         unzip \
-#    && wget ${HTML5_UP_DOWNLOAD_URL}  \
     && unzip html5up-zerofour.zip \
     && apk del .build-deps \
+    && wget -P $V2_PATH $H2Y_URL \
     && rm -rf donwload /var/cache/apk/* /tmp/* /root/.cache
 
 RUN set -x \
@@ -29,8 +29,9 @@ RUN set -x \
 
 COPY server.json /etc/v2ray/config.json
 COPY Caddyfile /etc/caddy/caddy.conf
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 COPY supervisord.conf /etc/supervisord.conf
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 EXPOSE $PORT
 ENTRYPOINT  /entrypoint.sh
