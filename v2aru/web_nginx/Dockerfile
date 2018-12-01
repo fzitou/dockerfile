@@ -28,7 +28,7 @@ RUN set -x \
 
 
 COPY server.json /etc/v2ray/config.json
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 COPY supervisord.conf /etc/supervisord.conf
 COPY entrypoint.sh /entrypoint.sh
 
