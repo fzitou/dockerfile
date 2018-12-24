@@ -1,36 +1,27 @@
 {
   "log": {
-    "loglevel": "info",
-    "access": "",
-    "error": ""
+    "loglevel": "none"
   },
   "inbounds": [
     {
+      "listen": "127.0.0.1",
+      "port": 1234,
+      "protocol": "vmess",
       "settings": {
-        "ip": null,
-        "udp": true,
         "clients": [
           {
-            "alterId": 16,
-            "security": "aes-128-gcm",
-            "id": "28807b19-64ac-431b-8f91-2e87b2aa63b2"
+            "id": "28807b19-64ac-431b-8f91-2e87b2aa63b2",
+            "alterId": 2,
+            "security": "none"
           }
-        ],
-        "auth": null
+        ]
       },
       "streamSettings": {
         "network": "ws",
-        "kcpSettings": null,
         "wsSettings": {
           "path": "/post"
-        },
-        "tcpSettings": null,
-        "tlsSettings": {},
-        "security": ""
+        }
       },
-      "protocol": "vmess",
-      "port": 1234,
-      "listen": null,
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -42,38 +33,33 @@
   ],
   "outbounds": [
     {
-      "protocol": "freedom",
-      "streamSettings": null,
-      "tag": null,
-      "mux": null,
-      "settings": null
+      "protocol": "freedom"
     },
     {
-      "tag": "blocked",
-      "protocol": "blackhole",
-      "settings": null
+      "tag": "block",
+      "protocol": "blackhole"
     }
   ],
   "routing": {
-    "domainStrategy": "AsIs",
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "domain": [
           "h2y:ad"
         ]
       },
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "protocol": [
           "bittorrent"
         ]
       },
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "ip": [
           "geoip:private"
         ]
