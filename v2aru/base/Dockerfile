@@ -4,7 +4,7 @@ ARG TZ='Asia/Shanghai'
 ARG H2Y_URL='https://github.com/ToutyRater/V2Ray-SiteDAT/blob/master/geofiles/h2y.dat'
 ARG V2_PATH='/usr/bin/v2ray/'
 
-ENV PORT 443/tcp
+ENV PORT 8080/tcp
 
 RUN wget -P $V2_PATH $H2Y_URL
 
