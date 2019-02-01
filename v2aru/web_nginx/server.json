@@ -49,7 +49,7 @@
       "settings": null
     },
     {
-      "tag": "blocked",
+      "tag": "block",
       "protocol": "blackhole",
       "settings": null
     }
@@ -59,21 +59,37 @@
     "rules": [
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "domain": [
-          "h2y:ad"
+          "h2y:ad",
+          "geosite:umeng",
+          "geosite:qihoo360",
+          "geosite:category-ads",
+          "domain:crashlytics.com",
+          "graph.facebook.com",
+          "crash.163.com",
+          "trafficjunky.net",
+          "offaces-butional.com",
+          "dafahao",
+          "minghui",
+          "dongtaiwang",
+          "epochtimes",
+          "ntdtv",
+          "falundafa",
+          "wujieliulan",
+          "zhengjian"
         ]
       },
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "protocol": [
           "bittorrent"
         ]
       },
       {
         "type": "field",
-        "outboundTag": "blocked",
+        "outboundTag": "block",
         "ip": [
           "geoip:private"
         ]
