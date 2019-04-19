@@ -60,7 +60,14 @@ RUN apk add -U --no-cache --virtual=build-dependencies \
         -D WITH_OPENEXR=NO .. \
     && ninja \
     && ninja install) \
+    && runDeps="$( \
+		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
+			| tr ',' '\n' \
+			| sort -u \
+			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
+	    )" \
+    && apk add -U --no-cache --virtual .run-deps $runDeps \
+    && apk del build-dependencies \
     && ln -s /usr/local/lib/python3.6/site-packages/cv2.cpython-36m-x86_64-linux-gnu.so \
           /usr/lib/python3.6/site-packages/cv2.so \
-    && apk del build-dependencies \
-    && rm -rf /var/cache/apk/* /opencv-$OPENCV_VER
+    && rm -rf /var/cache/apk/* /opencv-$OPENCV_VER /root/.cache

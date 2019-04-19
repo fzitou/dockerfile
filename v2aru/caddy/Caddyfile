@@ -1,0 +1,13 @@
+:443 {
+    root /var/www
+    gzip
+    timeouts none
+    log / stdout "{request}"
+    proxy /post localhost:1234 {
+        websocket
+        header_upstream -Origin
+    }
+    proxy /sup localhost:9001 {
+        transparent
+    }
+}

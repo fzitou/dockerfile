@@ -1,0 +1,99 @@
+{
+  "log": {
+    "loglevel": "info",
+    "access": "",
+    "error": ""
+  },
+  "inbounds": [
+    {
+      "settings": {
+        "ip": null,
+        "udp": true,
+        "clients": [
+          {
+            "alterId": 16,
+            "security": "aes-128-gcm",
+            "id": "28807b19-64ac-431b-8f91-2e87b2aa63b2"
+          }
+        ],
+        "auth": null
+      },
+      "streamSettings": {
+        "network": "ws",
+        "kcpSettings": null,
+        "wsSettings": {
+          "path": "/post"
+        },
+        "tcpSettings": null,
+        "tlsSettings": {},
+        "security": ""
+      },
+      "protocol": "vmess",
+      "port": 1234,
+      "listen": null,
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "streamSettings": null,
+      "tag": null,
+      "mux": null,
+      "settings": null
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": null
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "domain": [
+          "h2y:ad",
+          "geosite:umeng",
+          "geosite:qihoo360",
+          "geosite:category-ads",
+          "domain:crashlytics.com",
+          "graph.facebook.com",
+          "crash.163.com",
+          "trafficjunky.net",
+          "offaces-butional.com",
+          "dafahao",
+          "minghui",
+          "dongtaiwang",
+          "epochtimes",
+          "ntdtv",
+          "falundafa",
+          "wujieliulan",
+          "zhengjian"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "protocol": [
+          "bittorrent"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "block",
+        "ip": [
+          "geoip:private"
+        ]
+      }
+    ]
+  }
+}
