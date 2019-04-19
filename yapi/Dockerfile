@@ -1,6 +1,6 @@
 FROM node:alpine as build
 
-ENV YAPI_VERSION v1.6.0
+ENV YAPI_VERSION v1.6.2
 ENV YAPI_DOWNLOAD_URL https://github.com/YMFE/yapi/archive/${YAPI_VERSION}.tar.gz
 
 
