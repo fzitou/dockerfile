@@ -15,7 +15,7 @@ RUN apk add -U --no-cache \
         bash \
     && curl -sSLO ${YAPI_DOWNLOAD_URL} \
     && mkdir yapi \
-    && tar -zxvf v1.6.0.tar.gz -C ./yapi  --strip-components 1 \
+    && tar -zxvf ${YAPI_VERSION}.tar.gz -C ./yapi  --strip-components 1 \
     && cd yapi \
     && npm install --production
 
