@@ -1,8 +1,7 @@
 FROM node:alpine as build
 
-ENV YAPI_VERSION v1.6.2
+ENV YAPI_VERSION v1.5.12
 ENV YAPI_DOWNLOAD_URL https://github.com/YMFE/yapi/archive/${YAPI_VERSION}.tar.gz
-
 
 RUN apk add -U --no-cache \
         curl \
@@ -19,10 +18,9 @@ RUN apk add -U --no-cache \
     && cd yapi \
     && npm install --production
 
-CMD ['bash']
-
 
 FROM node:alpine
+
 MAINTAINER jzitou@gmail.com
 
 ENV HOME /yapi/vendors/
@@ -32,5 +30,7 @@ COPY --from=build /yapi/ ${HOME}
 WORKDIR ${HOME}
 
 EXPOSE 3000
+
 ENTRYPOINT ["node"]
+
 CMD ["server/app.js"]
