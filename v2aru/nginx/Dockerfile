@@ -1,16 +1,13 @@
-FROM fzitou/v2ray
-
-ARG UUID='65f77daa-519a-49e8-9552-0c0f559b387d'
+FROM v2ray/official
 
 ENV PORT 443/tcp
+ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 
 WORKDIR /var/www/
 ADD html5up-zerofour.zip .
 RUN apk add -U --no-cache \
         nginx \
         supervisor \
-    && apk del .build-deps \
-    && wget -P $V2_PATH \
     && rm -rf /var/cache/apk/* \
             /tmp/* \
             /root/.cache

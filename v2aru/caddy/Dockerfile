@@ -1,8 +1,7 @@
-FROM fzitou/v2ray
-
-ARG UUID='65f77daa-519a-49e8-9552-0c0f559b387d'
+FROM v2ray/official
 
 ENV PORT 443/tcp
+ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 
 WORKDIR /var/www/
 ADD html5up-eventually.zip .
