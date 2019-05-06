@@ -4,12 +4,16 @@ ENV PORT 443/tcp
 ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 
 WORKDIR /var/www/
-ADD html5up-eventually.zip .
+COPY html5up-eventually.zip fe.zip
 RUN apk add -U --no-cache \
         bash \
         caddy \
         supervisor \
-    && rm -rf /var/cache/apk/* \
+    && apk add --no-cache --virtual .build-deps \
+        unzip \
+    && unzip fe.zip \
+    && rm -rf fe.zip \
+            /var/cache/apk/* \
             /tmp/* \
             /root/.cache
 
