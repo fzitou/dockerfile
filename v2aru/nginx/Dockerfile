@@ -6,6 +6,7 @@ ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 WORKDIR /var/www/
 ADD html5up-zerofour.zip .
 RUN apk add -U --no-cache \
+        bash \
         nginx \
         supervisor \
     && rm -rf /var/cache/apk/* \
