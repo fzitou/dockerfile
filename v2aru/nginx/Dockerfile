@@ -2,19 +2,15 @@ FROM v2ray/official
 
 ARG TZ='Asia/Shanghai'
 ARG V2_PATH='/usr/bin/v2ray/'
+ARG UUID='65f77daa-519a-49e8-9552-0c0f559b387d'
 
 ENV PORT 443/tcp
-ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
 
 WORKDIR /var/www/
-COPY html5up-zerofour.zip html5up-zerofour.zip
+ADD html5up-zerofour.zip .
 RUN apk add -U --no-cache \
-        bash \
         nginx \
         supervisor \
-    && apk add --no-cache --virtual .build-deps \
-        unzip \
-    && unzip html5up-zerofour.zip \
     && apk del .build-deps \
     && wget -P $V2_PATH \
     && rm -rf donwload /var/cache/apk/* /tmp/* /root/.cache
