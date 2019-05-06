@@ -1,12 +1,11 @@
 FROM v2ray/official
 
 ARG TZ='Asia/Shanghai'
-ARG H2Y_URL='https://github.com/ToutyRater/V2Ray-SiteDAT/blob/master/geofiles/h2y.dat'
 ARG V2_PATH='/usr/bin/v2ray/'
 
 ENV PORT 8080/tcp
 
-RUN wget -P $V2_PATH $H2Y_URL
+RUN wget -P $V2_PATH
 
 RUN set -ex \
     && apk add -U --no-cache --virtual .tz \
