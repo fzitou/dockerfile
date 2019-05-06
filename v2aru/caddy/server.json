@@ -47,7 +47,6 @@
         "type": "field",
         "outboundTag": "block",
         "domain": [
-          "h2y:ad",
           "geosite:umeng",
           "geosite:qihoo360",
           "geosite:category-ads",

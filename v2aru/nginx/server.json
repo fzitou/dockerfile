@@ -1,8 +1,6 @@
 {
   "log": {
-    "loglevel": "info",
-    "access": "",
-    "error": ""
+    "loglevel": "none"
   },
   "inbounds": [
     {
@@ -12,7 +10,7 @@
         "clients": [
           {
             "alterId": 16,
-            "security": "aes-128-gcm",
+            "security": "none",
             "id": "28807b19-64ac-431b-8f91-2e87b2aa63b2"
           }
         ],
@@ -61,7 +59,6 @@
         "type": "field",
         "outboundTag": "block",
         "domain": [
-          "h2y:ad",
           "geosite:umeng",
           "geosite:qihoo360",
           "geosite:category-ads",
