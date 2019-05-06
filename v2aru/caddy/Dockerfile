@@ -11,7 +11,9 @@ RUN apk add -U --no-cache \
         supervisor \
     && apk del .build-deps \
     && wget -P $V2_PATH \
-    && rm -rf donwload /var/cache/apk/* /tmp/* /root/.cache
+    && rm -rf /var/cache/apk/* \
+            /tmp/* \
+            /root/.cache
 
 COPY Caddyfile /etc/caddy/caddy.conf
 COPY server.json /etc/v2ray/config.json
