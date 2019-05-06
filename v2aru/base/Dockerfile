@@ -1,8 +1,8 @@
 FROM v2ray/official
 
 ARG TZ='Asia/Shanghai'
-ARG V2_PATH='/usr/bin/v2ray/'
 
+ENV V2_PATH='/usr/bin/v2ray/'
 ENV PORT 8080/tcp
 
 RUN wget -P $V2_PATH

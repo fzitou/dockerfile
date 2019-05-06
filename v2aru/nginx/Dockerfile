@@ -1,7 +1,5 @@
-FROM v2ray/official
+FROM fzitou/v2ray
 
-ARG TZ='Asia/Shanghai'
-ARG V2_PATH='/usr/bin/v2ray/'
 ARG UUID='65f77daa-519a-49e8-9552-0c0f559b387d'
 
 ENV PORT 443/tcp
@@ -15,15 +13,8 @@ RUN apk add -U --no-cache \
     && wget -P $V2_PATH \
     && rm -rf donwload /var/cache/apk/* /tmp/* /root/.cache
 
-RUN set -x \
-    && apk add --no-cache --virtual .tz alpine-conf tzdata \
-    && /sbin/setup-timezone -z $TZ \
-    && apk del .tz \
-    && rm -rf /var/cache/apk/* /tmp/* /root/.cache
-
-
-COPY server.json /etc/v2ray/config.json
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY server.json /etc/v2ray/config.json
 COPY supervisord.conf /etc/supervisord.conf
 COPY entrypoint.sh /entrypoint.sh
 
