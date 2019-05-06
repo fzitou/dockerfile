@@ -8,8 +8,6 @@ ADD html5up-eventually.zip .
 RUN apk add -U --no-cache \
         caddy \
         supervisor \
-    && apk del .build-deps \
-    && wget -P $V2_PATH \
     && rm -rf /var/cache/apk/* \
             /tmp/* \
             /root/.cache
