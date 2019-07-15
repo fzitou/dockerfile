@@ -33,13 +33,19 @@
   ],
   "outbounds": [
     {
-      "protocol": "freedom"
+      "protocol": "freedom",
+      "domainStrategy": "UseIP"
     },
     {
       "tag": "block",
       "protocol": "blackhole"
     }
   ],
+  "dns": {
+    "servers": [
+      "8.8.8.8"
+    ]
+  },
   "routing": {
     "domainStrategy": "IPIfNonMatch",
     "rules": [

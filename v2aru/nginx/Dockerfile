@@ -2,6 +2,7 @@ FROM v2ray/official
 
 ENV PORT 443/tcp
 ENV UUID 65f77daa-519a-49e8-9552-0c0f559b387d
+ENV DNS 8.8.8.8
 
 WORKDIR /var/www/
 COPY html5up-zerofour.zip fe.zip

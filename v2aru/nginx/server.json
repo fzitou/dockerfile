@@ -41,6 +41,7 @@
   "outbounds": [
     {
       "protocol": "freedom",
+      "domainStrategy": "UseIP",
       "streamSettings": null,
       "tag": null,
       "mux": null,
@@ -52,6 +53,11 @@
       "settings": null
     }
   ],
+  "dns": {
+    "servers": [
+      "8.8.8.8"
+    ]
+  },
   "routing": {
     "domainStrategy": "AsIs",
     "rules": [
